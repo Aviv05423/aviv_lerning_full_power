@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'common/app_bar.dart';
 import 'common/app_card.dart';
@@ -10,10 +11,16 @@ class reovenPage extends StatefulWidget {
 }
 
 class _reovenPageState extends State<reovenPage> {
+  final user = FirebaseAuth.instance.currentUser!;
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(),
+      drawer: Drawer(
+        child: Center(child: Text("!" + user.email! + " היי לך")),
+      ),
       appBar: myAppBarX(),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -50,6 +57,7 @@ class _reovenPageState extends State<reovenPage> {
                   ),
                 ),
                 AppCard(
+                  // buttonAction:,
                     child: Column(
                   children: [
                     Text(

@@ -1,5 +1,6 @@
 
 // import 'package:aviv_lerning_full_power/common/app_bar.dart';
+import 'package:aviv_lerning_full_power/main_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'reoven_page.dart';
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: logInPage()
+      // home: logInPage()
+      home: MainPage()
       // home: reovenPage()
     );
   }
