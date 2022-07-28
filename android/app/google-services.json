@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "637531672789",
+    "project_id": "avivpulseapp",
+    "storage_bucket": "avivpulseapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:637531672789:android:23f852cff5c3fd9d55d25c",
+        "android_client_info": {
+          "package_name": "com.example.aviv_lerning_full_power"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "637531672789-oc2v64jvsijkvpr5uiklq3mfst77kp5u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7bvQBdetNgtQR1qqAbdIXHRwsO5v2bGE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "637531672789-oc2v64jvsijkvpr5uiklq3mfst77kp5u.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "637531672789-vu60roi7pmsel15g2ekit71bonalhrop.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.avivLerningFullPower"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
