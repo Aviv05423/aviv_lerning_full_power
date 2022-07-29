@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class AppCard extends StatefulWidget {
@@ -28,6 +29,8 @@ class _AppCardState extends State<AppCard> {
             child: InkWell(
               splashColor: Colors.green,
               onTap: () {
+                //TODO לשאול את המאסטר איך לעשות את זה אישי
+                FirebaseAuth.instance.signOut();
                 debugPrint("לחוץ");
               },
               child: Container(

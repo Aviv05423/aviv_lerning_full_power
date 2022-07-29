@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import 'common/myTextField.dart';
+
 class logInPage extends StatefulWidget {
   const logInPage({Key? key}) : super(key: key);
 
@@ -20,11 +22,12 @@ class _logInPageState extends State<logInPage> {
   }
 
   @override
-  void dispose(){
+  void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
   }
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[300],
@@ -58,49 +61,36 @@ class _logInPageState extends State<logInPage> {
                 ),
                 //  שם משתמש אימייל
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        border: Border.all(color: Colors.white),
-                        borderRadius: BorderRadius.circular(12)),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 20, right: 20),
-                      child: TextField(
-                        controller: _emailController,
-                        decoration: InputDecoration(
-                          hintTextDirection: TextDirection.rtl,
-                          hintText: "מייל",
-                          border: InputBorder.none,
-                        ),
-                      ),
-                    ),
-                  ),
+                  padding: const EdgeInsets.only(left: 25, right: 25),
+                  child: myTextField("מייל", false, _emailController)
+                  // TextField(
+                  //   // obscureText: true,
+                  //   decoration: InputDecoration(
+                  //     fillColor: Colors.grey[200],
+                  //     filled: true,
+                  //     contentPadding: const EdgeInsets.symmetric(
+                  //         vertical: 13, horizontal: 20),
+                  //     focusedBorder: OutlineInputBorder(
+                  //       borderSide:
+                  //           BorderSide(color: Colors.deepPurple, width: 1.0),
+                  //       borderRadius: BorderRadius.circular(12),
+                  //     ),
+                  //     enabledBorder: OutlineInputBorder(
+                  //       borderSide: BorderSide(color: Colors.white, width: 1.0),
+                  //       borderRadius: BorderRadius.circular(12),
+                  //     ),
+                  //     hintTextDirection: TextDirection.rtl,
+                  //     hintText: 'מייל',
+                  //   ),
+                  // ),
                 ),
                 //  סיסמה
                 SizedBox(
                   height: 10,
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        border: Border.all(color: Colors.white),
-                        borderRadius: BorderRadius.circular(12)),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 20, right: 20),
-                      child: TextField(
-                        controller: _passwordController,
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          hintTextDirection: TextDirection.rtl,
-                          hintText: "סיסמה",
-                          border: InputBorder.none,
-                        ),
-                      ),
-                    ),
-                  ),
+                  padding: const EdgeInsets.only(left: 25, right: 25),
+                  child: myTextField("סיסמה", true, _passwordController),
                 ),
                 SizedBox(
                   height: 10,
@@ -117,12 +107,12 @@ class _logInPageState extends State<logInPage> {
                           borderRadius: BorderRadius.circular(12)),
                       child: Center(
                           child: Text(
-                            "!הכנס",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18),
-                          )),
+                        "!הכנס",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18),
+                      )),
                     ),
                   ),
                 ),
@@ -141,7 +131,7 @@ class _logInPageState extends State<logInPage> {
                     Text(
                       " ?לא מכירים",
                       style: TextStyle(
-                        // color: Colors.blue,
+                          // color: Colors.blue,
                           fontWeight: FontWeight.bold),
                     ),
                   ],
