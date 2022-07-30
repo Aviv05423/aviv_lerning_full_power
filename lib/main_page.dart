@@ -1,3 +1,4 @@
+import 'package:aviv_lerning_full_power/auth_page.dart';
 import 'package:aviv_lerning_full_power/log_in_page.dart';
 import 'package:aviv_lerning_full_power/reoven_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -16,7 +17,7 @@ class MainPage extends StatelessWidget {
             if (snapshot.hasData) {
               return reovenPage();
             } else {
-              return logInPage();
+              return AuthPage();
             }
           }),
     );

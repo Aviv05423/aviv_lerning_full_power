@@ -3,30 +3,32 @@ import 'package:flutter/material.dart';
 
 import 'common/myTextField.dart';
 
-class logInPage extends StatefulWidget {
-  final VoidCallback showRegisterPage;
-  const logInPage({Key? key, required this.showRegisterPage}) : super(key: key);
+class RegisterPage extends StatefulWidget {
+  final VoidCallback showLoginPage;
+
+  const RegisterPage({Key? key, required this.showLoginPage}) : super(key: key);
 
   @override
-  _logInPageState createState() => _logInPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _logInPageState extends State<logInPage> {
+class _RegisterPageState extends State<RegisterPage> {
+
   //text controllers
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-
-  Future signIn() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: _emailController.text.trim(),
-        password: _passwordController.text.trim());
-  }
 
   @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
+  }
+
+  Future signUp() async {
+    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim());
   }
 
   Widget build(BuildContext context) {
@@ -45,7 +47,7 @@ class _logInPageState extends State<logInPage> {
 
                 //  שלומות לך
 
-                Text("!שלום לך שוב",
+                Text("!ברוכים הבאים לך",
                     style: TextStyle(
                       fontSize: 66,
                       fontFamily: "karantina-regular",
@@ -54,7 +56,7 @@ class _logInPageState extends State<logInPage> {
                   height: 10,
                 ),
                 Text(
-                  "!ברוכ.ה הבא.ה, שמחים שחזרת אלינו",
+                  "!הרשמו עכשיו לחווית אימון חדשה",
                   style: TextStyle(fontSize: 20),
                 ),
                 SizedBox(
@@ -62,8 +64,8 @@ class _logInPageState extends State<logInPage> {
                 ),
                 //  שם משתמש אימייל
                 Padding(
-                  padding: const EdgeInsets.only(left: 25, right: 25),
-                  child: myTextField("מייל", false, _emailController)
+                    padding: const EdgeInsets.only(left: 25, right: 25),
+                    child: myTextField("מייל", false, _emailController)
                   // TextField(
                   //   // obscureText: true,
                   //   decoration: InputDecoration(
@@ -100,7 +102,7 @@ class _logInPageState extends State<logInPage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: GestureDetector(
-                    onTap: signIn,
+                    onTap: signUp,
                     child: Container(
                       padding: EdgeInsets.all(20),
                       decoration: BoxDecoration(
@@ -108,12 +110,12 @@ class _logInPageState extends State<logInPage> {
                           borderRadius: BorderRadius.circular(12)),
                       child: Center(
                           child: Text(
-                        "הכנס",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18),
-                      )),
+                            "הרשמה",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18),
+                          )),
                     ),
                   ),
                 ),
@@ -122,22 +124,22 @@ class _logInPageState extends State<logInPage> {
                 ),
                 //  הרשמה
                 GestureDetector(
-                  onTap: widget.showRegisterPage,
+                  onTap: widget.showLoginPage,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       GestureDetector(
-                        onTap: widget.showRegisterPage,
+                        onTap: widget.showLoginPage,
                         child: Text(
-                          "הירשמו עכשיו",
+                          "לכניסה",
                           style: TextStyle(
                               color: Colors.blue, fontWeight: FontWeight.bold),
                         ),
                       ),
                       Text(
-                        " ?לא מכירים",
+                        " !אנחנו מכירים",
                         style: TextStyle(
-                            // color: Colors.blue,
+                          // color: Colors.blue,
                             fontWeight: FontWeight.bold),
                       ),
                     ],
