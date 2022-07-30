@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:developer';
+import 'package:http/http.dart' as http;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -29,7 +32,7 @@ class _AppCardState extends State<AppCard> {
             child: InkWell(
               splashColor: Colors.green,
               onTap: () async {
-                 // print('A');
+                 print('Start');
                 // var respone = Future.delayed(Duration(seconds: 1), () => 'B');
                  // print(await respone);
                  // print(respone.then((value) => print(value)));
@@ -40,26 +43,28 @@ class _AppCardState extends State<AppCard> {
                 debugPrint("לחוץ");
 
                 // bool, double, list, String, Map
-                List<bool>? myList = [false, true];
-                Map<String, dynamic> someThing = {
-                  "someThing1": {
-                    'key1': 10,
-                    'key2': 'val2',
-                    'key3': {},
-                  },
-                  "someThing2": {
-                    'key1': 'val1',
-                    'key2': 'val2',
-                    'key3': '',
-                  }
-                };
+                // List<bool>? myList = [false, true];
+                // Map<String, dynamic> someThing = {
+                //   "someThing1": {
+                //     'key1': 10,
+                //     'key2': 'val2',
+                //     'key3': {},
+                //   },
+                //   "someThing2": {
+                //     'key1': 'val1',
+                //     'key2': 'val2',
+                //     'key3': '',
+                //   }
+                // };
+                //
+                // someThing['someThing2']['key4'] = {
+                //   'someThing3': {'key4': 'val4'},
+                // };
 
-                someThing['someThing2']['key4'] = {
-                  'someThing3': {'key4': 'val4'},
-                };
+              // print('someThing ${someThing}');
 
-              print('someThing ${someThing}');
-
+              var time = await getTime();
+              log('time ${time}');
 
 
             // void getTime () async
@@ -68,31 +73,6 @@ class _AppCardState extends State<AppCard> {
             // Map data = jsonDecode ( response . body);
             //    //print (data) ;
             //   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
               },
               child: Container(
@@ -114,5 +94,21 @@ class _AppCardState extends State<AppCard> {
         )
       ],
     );
+  }
+}
+
+// Future<Map<String, dynamic>?> getTime() async {
+Future<List?> getTime() async {
+// make the request
+  http.Response response = await http.get(
+    Uri.parse('https://newsapi.org/v2/everything?q=bitcoin&apiKey=42d334d857d4443da804d6ed63ae5747')) ;
+  Map<String, dynamic> data = jsonDecode(response.body);
+
+  if(data["status"] == "ok"){
+    List _articles = data["articles"] ?? [];
+
+    return _articles;
+  }else{
+    print("error on fetch api");
   }
 }
