@@ -99,16 +99,20 @@ class _AppCardState extends State<AppCard> {
 
 // Future<Map<String, dynamic>?> getTime() async {
 Future<List?> getTime() async {
+  print('Start getTime()');
 // make the request
   http.Response response = await http.get(
-    Uri.parse('https://newsapi.org/v2/everything?q=bitcoin&apiKey=42d334d857d4443da804d6ed63ae5747')) ;
-  Map<String, dynamic> data = jsonDecode(response.body);
+    Uri.parse('https://www.google.com/search?q=google&animal=cat')) ;
+  // Map<String, dynamic> data = jsonDecode(response.body);
+  print('response DONE: ${response.body}');
 
-  if(data["status"] == "ok"){
-    List _articles = data["articles"] ?? [];
+  // if(data["status"] == "ok"){
+  //   List _articles = data["articles"] ?? [];
+  //
+  //   return _articles;
+  // }else{
+  //   print("error on fetch api");
+  // }
 
-    return _articles;
-  }else{
-    print("error on fetch api");
-  }
+
 }
